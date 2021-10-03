@@ -284,7 +284,7 @@ const CLEAN = exports.CLEAN = {
   },
 
   person: function (array) {
-    return [].concat(array) .map(person=>{
+    return [].concat(array).map(person=>{
       return {name: person['_'], ...person['$']}
     })
   }
