@@ -52,7 +52,7 @@ const buildOptions = exports.buildOptions = function (params) {
                 'explicit', 'complete', 'blocked' , 'person'],
         episodes: ['title', 'description', 'subtitle', 'imageURL', 'pubDate',
                 'link', 'language', 'enclosure', 'duration', 'summary', 'blocked',
-                'explicit', 'order']
+                'explicit', 'order', 'person']
       },
       required: {
         meta: [],
@@ -493,7 +493,7 @@ const getPodcastFromFeed = exports.getPodcastFromFeed = function (feed, params) 
       console.warn("\nWarning: Feed includes \<itunes:new-feed-url\> element, which indicates that the feed being parsed may be outdated.\n")
     }
 
-    const meta = createMetaObjectFromFeed(channel, options)
+    const meta = createMetaObjectFromFeed(channel, options)    
     const episodes = createEpisodesObjectFromFeed(channel, options)
 
     return {meta, episodes}
