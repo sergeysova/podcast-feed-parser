@@ -18,10 +18,10 @@ const DEFAULT = exports.DEFAULT = {
   fields: {
     meta: ['title', 'description', 'subtitle', 'imageURL', 'lastUpdated', 'link',
             'language', 'editor', 'author', 'summary', 'categories', 'owner',
-            'explicit', 'complete', 'blocked'],
+            'explicit', 'complete', 'blocked', 'person'],
     episodes: ['title', 'description', 'subtitle', 'imageURL', 'pubDate',
             'link', 'language', 'enclosure', 'duration', 'summary', 'blocked',
-            'explicit', 'order']
+            'explicit', 'order', 'person']
   },
   required: {
     meta: [],
@@ -49,7 +49,7 @@ const buildOptions = exports.buildOptions = function (params) {
       fields: {
         meta: ['title', 'description', 'subtitle', 'imageURL', 'lastUpdated', 'link',
                 'language', 'editor', 'author', 'summary', 'categories', 'owner',
-                'explicit', 'complete', 'blocked'],
+                'explicit', 'complete', 'blocked' , 'person'],
         episodes: ['title', 'description', 'subtitle', 'imageURL', 'pubDate',
                 'link', 'language', 'enclosure', 'duration', 'summary', 'blocked',
                 'explicit', 'order']
@@ -182,6 +182,10 @@ const GET = exports.GET = {
     }
 
     return categoriesArray
+  },
+
+  person: function(node){
+    return node['podcast:person']
   }
 }
 
@@ -277,6 +281,12 @@ const CLEAN = exports.CLEAN = {
 
   imageURL: function (string) {
     return string
+  },
+
+  person: function (array) {
+    return [].concat(array) .map(person=>{
+      return {name: person['_'], ...person['$']}
+    })
   }
 
 }
@@ -463,7 +473,7 @@ const getPodcastFromURL = exports.getPodcastFromURL = async function (url, param
     }
 
     const meta = createMetaObjectFromFeed(channel, options)
-    const episodes = createEpisodesObjectFromFeed(channel, options)
+    const episodes = createEpisodesObjectFromFeed(channel, options)   
 
     return {meta, episodes}
   }
@@ -492,3 +502,5 @@ const getPodcastFromFeed = exports.getPodcastFromFeed = function (feed, params) 
     throw err
   }
 }
+
+
