@@ -1,6 +1,6 @@
 {
-  "name": "podcast-feed-parser",
-  "version": "1.0.4",
+  "name": "@sergeysova/podcast-feed-parser",
+  "version": "1.0.5",
   "description": "A highly customizable package for fetching and parsing podcast feeds into simple and manageable JavaScript objects. For use with node and in the browser.",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jbierfeldt/podcast-feed-parser.git"
+    "url": "https://github.com/sergeysova/podcast-feed-parser.git"
   },
   "keywords": [
     "javascript",

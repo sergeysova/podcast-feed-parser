@@ -56,7 +56,7 @@ By default, `podcast-feed-parser` will parse a podcast's xml feed and return an 
 For fetching remote feeds from urls, use `getPodcastFromURL`:
 
 ```js
-const podcastFeedParser = require("podcast-feed-parser")
+const podcastFeedParser = require("@sergeysova/podcast-feed-parser")
 
 // for fetching remote feeds, use getPodcastFromURL.
 // Note that function must be async
@@ -73,7 +73,7 @@ printPodcastTitle('http://feeds.gimletmedia.com/hearreplyall')
 If you already have the podcast feed xml, use `getPodcastFromFeed`:
 
 ```js
-const podcastFeedParser = require("podcast-feed-parser")
+const podcastFeedParser = require("@sergeysova/podcast-feed-parser")
 const fs = require('fs')
 
 // if you already have the feed xml, you can parse
@@ -295,7 +295,7 @@ console.log(podcast.episodes[0].duration)
 `podcast-feed-parser` can also fetch and parse remote feeds in both the browser and server environment thanks to `isomorphic-fetch`. Simply call `getPodcastFromURL(url, options)`. Functions which fetch remote feeds must be asynchronous and utilize async/await.
 
 ```js
-const podcastFeedParser = require("podcast-feed-parser")
+const podcastFeedParser = require("@sergeysova/podcast-feed-parser")
 
 async function getNumberOfEpisodes (url) {
 	const podcast = await podcastFeedParser.getPodcastFromURL(url)
